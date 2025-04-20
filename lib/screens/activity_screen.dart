@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hw46/app_routes.dart';
 import 'package:hw46/models/route_arguments/fit_arguments.dart';
 import '../widgets/select_activity_system.dart';
 
@@ -12,15 +13,16 @@ class ActivityScreen extends StatefulWidget {
 class _ActivityScreenState extends State<ActivityScreen> {
   String? selectedActivity;
   void goToRes() {
-    final basicArg = ModalRoute.of(context)!.settings.arguments as double;
-    final calories = FitActivityArguments(
+    final previous = ModalRoute.of(context)!.settings.arguments as FitArguments;
+    final updatedArgs = FitArguments(
+      gender: previous.gender,
+      weight: previous.weight,
+      height: previous.height,
+      age: previous.age,
       activity: selectedActivity!,
-      calories: basicArg,
+      goal: previous.goal,
     );
-    Navigator.of(
-      context,
-    ).pushNamed('/goal', arguments: calories.caloriesActivity);
-    print(calories.caloriesActivity);
+    Navigator.of(context).pushNamed(AppRoutes.result, arguments: updatedArgs);
   }
 
   @override

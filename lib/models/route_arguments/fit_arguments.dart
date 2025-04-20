@@ -1,14 +1,18 @@
-class FitBaseArguments {
-  String gender;
-  double weight;
-  double height;
-  int age;
+class FitArguments {
+  final String gender;
+  final double weight;
+  final double height;
+  final int age;
+  final String activity;
+  final String goal;
 
-  FitBaseArguments({
+  FitArguments({
     required this.gender,
     required this.weight,
     required this.height,
     required this.age,
+    required this.activity,
+    required this.goal,
   });
 
   double get calories {
@@ -16,35 +20,10 @@ class FitBaseArguments {
       if (gender == 'male') {
         return 10 * weight + 6.25 * height - 5 * age + 5;
       } else {
-        return 10 * weight + 6.25 * height + 5 * age - 161;
+        return 10 * weight + 6.25 * height - 5 * age - 161;
       }
     }
   }
-}
-
-class FitActivityArguments {
-  final String activity;
-  final double calories;
-
-  FitActivityArguments({required this.activity, required this.calories});
-
-  double get caloriesActivity {
-    const caloriesActivity = {
-      'Sedentary lifestyle': 1.2,
-      'Moderate lifestyle': 1.375,
-      'Average lifestyle': 1.55,
-      'High lifestyle': 1.725,
-      'Very High lifestyle': 1.9,
-    };
-    return calories * caloriesActivity[activity]!;
-  }
-}
-
-class FitGoalArguments {
-  final String goal;
-  final double calories;
-
-  FitGoalArguments({required this.goal, required this.calories});
 
   double get caloriesGoal {
     const goalCalories = {
@@ -53,5 +32,16 @@ class FitGoalArguments {
       'weight_gain': 1.15,
     };
     return calories * goalCalories[goal]!;
+  }
+
+  double get finalCalories {
+    const caloriesActivity = {
+      'Sedentary lifestyle': 1.2,
+      'Moderate lifestyle': 1.375,
+      'Average lifestyle': 1.55,
+      'High lifestyle': 1.725,
+      'Very High lifestyle': 1.9,
+    };
+    return calories * caloriesActivity[activity]!;
   }
 }

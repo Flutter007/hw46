@@ -26,16 +26,15 @@ class _BasicParamsScreenState extends State<BasicParamsScreen> {
   }
 
   void goToNext() {
-    final arg = FitBaseArguments(
+    final arg = FitArguments(
       gender: gender!,
       weight: double.parse(weightController.text),
       height: double.parse(heightController.text),
       age: int.parse(ageController.text),
+      activity: '',
+      goal: '',
     );
-    Navigator.of(
-      context,
-    ).pushNamed(AppRoutes.activity, arguments: arg.calories);
-    print(arg.calories);
+    Navigator.of(context).pushNamed(AppRoutes.goal, arguments: arg);
   }
 
   @override

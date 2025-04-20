@@ -17,7 +17,7 @@ class StartTestScreen extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            ImageContainer(image: 'assets/images/photo.png'),
+            ImageContainer(image: 'assets/images/photo.png', height: 310),
             Text(
               '"This test will be helpful for both experienced athletes and beginners who wish to explore the world of proper nutrition!"',
               style: theme.textTheme.titleMedium,

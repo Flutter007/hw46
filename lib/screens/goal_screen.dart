@@ -10,16 +10,26 @@ class GoalScreen extends StatefulWidget {
   State<GoalScreen> createState() => _GoalScreenState();
 }
 
-String? goal;
-
 class _GoalScreenState extends State<GoalScreen> {
+  String? goal;
   void goToNext() {
-    final calories = ModalRoute.of(context)!.settings.arguments as double;
-    final goalArg = FitGoalArguments(goal: goal!, calories: calories);
-    Navigator.of(
-      context,
-    ).pushNamed(AppRoutes.result, arguments: goalArg.caloriesGoal);
-    print(goalArg.caloriesGoal);
+    if (goal != null) {
+      final previois =
+          ModalRoute.of(context)!.settings.arguments as FitArguments;
+      final updatedArgs = FitArguments(
+        gender: previois.gender,
+        weight: previois.weight,
+        height: previois.height,
+        age: previois.age,
+        activity: '',
+        goal: goal!,
+      );
+      Navigator.of(
+        context,
+      ).pushNamed(AppRoutes.activity, arguments: updatedArgs);
+    } else {
+      return;
+    }
   }
 
   @override
@@ -37,7 +47,6 @@ class _GoalScreenState extends State<GoalScreen> {
                 setState(() {
                   goal = value;
                 });
-                print(goal);
               },
               dropdownMenuEntries:
                   goalList
