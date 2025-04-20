@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hw46/app_routes.dart';
 import 'package:hw46/models/goal.dart';
+import '../models/route_arguments/fit_arguments.dart';
 
 class GoalScreen extends StatefulWidget {
   const GoalScreen({super.key});
@@ -9,9 +10,16 @@ class GoalScreen extends StatefulWidget {
   State<GoalScreen> createState() => _GoalScreenState();
 }
 
+String? goal;
+
 class _GoalScreenState extends State<GoalScreen> {
   void goToNext() {
-    Navigator.of(context).pushNamed(AppRoutes.activity);
+    final calories = ModalRoute.of(context)!.settings.arguments as double;
+    final goalArg = FitGoalArguments(goal: goal!, calories: calories);
+    Navigator.of(
+      context,
+    ).pushNamed(AppRoutes.result, arguments: goalArg.caloriesGoal);
+    print(goalArg.caloriesGoal);
   }
 
   @override
@@ -25,6 +33,12 @@ class _GoalScreenState extends State<GoalScreen> {
             Text('What do you want to achieve?'),
             DropdownMenu(
               label: Text('Select Goal'),
+              onSelected: (value) {
+                setState(() {
+                  goal = value;
+                });
+                print(goal);
+              },
               dropdownMenuEntries:
                   goalList
                       .map(

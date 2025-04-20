@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hw46/app_routes.dart';
+import 'package:hw46/models/route_arguments/fit_arguments.dart';
 import 'package:hw46/widgets/custom_textfield.dart';
 
 import '../models/gender.dart';
@@ -15,7 +16,7 @@ class _BasicParamsScreenState extends State<BasicParamsScreen> {
   var weightController = TextEditingController();
   var heightController = TextEditingController();
   var ageController = TextEditingController();
-
+  String? gender;
   @override
   void dispose() {
     weightController.dispose();
@@ -25,7 +26,16 @@ class _BasicParamsScreenState extends State<BasicParamsScreen> {
   }
 
   void goToNext() {
-    Navigator.of(context).pushNamed(AppRoutes.goal);
+    final arg = FitBaseArguments(
+      gender: gender!,
+      weight: double.parse(weightController.text),
+      height: double.parse(heightController.text),
+      age: int.parse(ageController.text),
+    );
+    Navigator.of(
+      context,
+    ).pushNamed(AppRoutes.activity, arguments: arg.calories);
+    print(arg.calories);
   }
 
   @override
@@ -40,6 +50,12 @@ class _BasicParamsScreenState extends State<BasicParamsScreen> {
             DropdownMenu(
               expandedInsets: EdgeInsets.all(105),
               label: Text('Select Gender'),
+              onSelected: (value) {
+                setState(() {
+                  gender = value;
+                  print(gender);
+                });
+              },
               dropdownMenuEntries:
                   genderList
                       .map(
