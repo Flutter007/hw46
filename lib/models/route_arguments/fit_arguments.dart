@@ -15,33 +15,33 @@ class FitArguments {
     required this.goal,
   });
 
-  double get calories {
-    {
-      if (gender == 'male') {
-        return 10 * weight + 6.25 * height - 5 * age + 5;
-      } else {
-        return 10 * weight + 6.25 * height - 5 * age - 161;
-      }
+  double get basicCalories {
+    double base = 10 * weight + 6.25 * height - 5 * age;
+    if (gender == 'male') {
+      return base + 5;
+    } else {
+      return base - 161;
     }
   }
 
-  double get caloriesGoal {
+  double get finalCalories {
     const goalCalories = {
       'weight_loss': 0.85,
       'weight_maintenance': 1,
       'weight_gain': 1.15,
     };
-    return calories * goalCalories[goal]!;
+    return caloriesActivity * goalCalories[goal]!;
   }
 
-  double get finalCalories {
+  double get caloriesActivity {
     const caloriesActivity = {
       'Sedentary lifestyle': 1.2,
       'Moderate lifestyle': 1.375,
-      'Average lifestyle': 1.55,
-      'High lifestyle': 1.725,
-      'Very High lifestyle': 1.9,
+      'Average - activity lifestyle': 1.55,
+      'High - activity lifestyle': 1.725,
+      'Very High - activity lifestyle': 1.9,
     };
-    return calories * caloriesActivity[activity]!;
+
+    return basicCalories * caloriesActivity[activity]!;
   }
 }

@@ -14,18 +14,22 @@ class StartTestScreen extends StatelessWidget {
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(title: Text('Start Your Test')),
-      body: Center(
+      body: SafeArea(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ImageContainer(image: 'assets/images/photo.png', height: 310),
-            Text(
-              '"This test will be helpful for both experienced athletes and beginners who wish to explore the world of proper nutrition!"',
-              style: theme.textTheme.titleMedium,
-              textAlign: TextAlign.left,
+            ImageContainer(image: 'assets/images/photo.png', height: 210),
+            Padding(
+              padding: EdgeInsets.all(3),
+              child: Text(
+                'This test will be helpful for both experienced athletes and beginners who wish to explore the world of proper nutrition!',
+                style: theme.textTheme.titleMedium,
+                textAlign: TextAlign.center,
+              ),
             ),
             ElevatedButton(
               onPressed: () => goToNextForm(context),
-              child: Text('Start Test!'),
+              child: Text('Start Test!', style: TextStyle(fontSize: 22)),
             ),
           ],
         ),

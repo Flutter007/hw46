@@ -13,6 +13,7 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return SizedBox(
       width: 200,
       height: 100,
@@ -23,6 +24,8 @@ class CustomTextField extends StatelessWidget {
           border: OutlineInputBorder(),
           labelText: labelText,
           suffixText: suffixText,
+          suffixStyle: theme.textTheme.titleMedium,
+          labelStyle: theme.textTheme.titleMedium,
         ),
       ),
     );

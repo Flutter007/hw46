@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hw46/app_routes.dart';
 import 'package:hw46/models/route_arguments/fit_arguments.dart';
+import 'package:hw46/widgets/title_text.dart';
 import '../widgets/select_activity_system.dart';
 
 class ActivityScreen extends StatefulWidget {
@@ -31,8 +32,9 @@ class _ActivityScreenState extends State<ActivityScreen> {
       appBar: AppBar(title: Text('Activity Enter')),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Select your activity level:'),
+            TitleText(title: 'Select your activity level :'),
             SelectActivitySystem(
               selectedActivity: selectedActivity,
               onSelect: (activity) {
@@ -41,7 +43,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
                 });
               },
             ),
-            TextButton(onPressed: goToRes, child: Text('Next ➦')),
+            ElevatedButton(onPressed: goToRes, child: Text('Next ➦')),
           ],
         ),
       ),

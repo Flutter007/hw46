@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hw46/app_routes.dart';
-import 'package:hw46/models/goal.dart';
+import 'package:hw46/widgets/title_text.dart';
+import '../data/fit_test_data.dart';
 import '../models/route_arguments/fit_arguments.dart';
 
 class GoalScreen extends StatefulWidget {
@@ -14,13 +15,13 @@ class _GoalScreenState extends State<GoalScreen> {
   String? goal;
   void goToNext() {
     if (goal != null) {
-      final previois =
+      final previous =
           ModalRoute.of(context)!.settings.arguments as FitArguments;
       final updatedArgs = FitArguments(
-        gender: previois.gender,
-        weight: previois.weight,
-        height: previois.height,
-        age: previois.age,
+        gender: previous.gender,
+        weight: previous.weight,
+        height: previous.height,
+        age: previous.age,
         activity: '',
         goal: goal!,
       );
@@ -38,9 +39,10 @@ class _GoalScreenState extends State<GoalScreen> {
       appBar: AppBar(title: Text('Goal Enter')),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('What do you want to achieve?'),
+            TitleText(title: 'What do you want to achieve?'),
+            SizedBox(height: 20),
             DropdownMenu(
               label: Text('Select Goal'),
               onSelected: (value) {
@@ -60,7 +62,8 @@ class _GoalScreenState extends State<GoalScreen> {
                       )
                       .toList(),
             ),
-            TextButton(onPressed: goToNext, child: Text('Next ➦')),
+            SizedBox(height: 20),
+            ElevatedButton(onPressed: goToNext, child: Text('Next ➦')),
           ],
         ),
       ),

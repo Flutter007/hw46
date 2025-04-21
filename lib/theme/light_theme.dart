@@ -9,21 +9,17 @@ final lightTheme = defaultTheme.copyWith(
     backgroundColor: lightColorScheme.primaryContainer,
     foregroundColor: lightColorScheme.onPrimaryContainer,
   ),
-  tabBarTheme: TabBarTheme().copyWith(
-    indicatorColor: lightColorScheme.error,
-    labelColor: lightColorScheme.error,
-    unselectedLabelColor: lightColorScheme.onPrimaryContainer,
-  ),
+
   inputDecorationTheme: InputDecorationTheme(
     focusColor: lightColorScheme.surface,
-    labelStyle: TextStyle(color: lightColorScheme.onSurface, fontSize: 22),
+    labelStyle: TextStyle(color: lightColorScheme.onSurface, fontSize: 16),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(15),
       borderSide: BorderSide(color: lightColorScheme.surface, width: 4),
     ),
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(15),
-      borderSide: BorderSide(color: lightColorScheme.surface, width: 4),
+      borderSide: BorderSide(color: lightColorScheme.inversePrimary, width: 4),
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(15),
@@ -31,7 +27,7 @@ final lightTheme = defaultTheme.copyWith(
     ),
   ),
 
-  scaffoldBackgroundColor: lightColorScheme.inversePrimary,
+  scaffoldBackgroundColor: lightColorScheme.surface,
   cardTheme: CardTheme().copyWith(color: lightColorScheme.surface),
-  textTheme: GoogleFonts.alfaSlabOneTextTheme(),
+  textTheme: GoogleFonts.vollkornScTextTheme(),
 );

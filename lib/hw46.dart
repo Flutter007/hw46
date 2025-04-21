@@ -5,7 +5,7 @@ import 'package:hw46/screens/basic_params_screen.dart';
 import 'package:hw46/screens/not_found_screen.dart';
 import 'package:hw46/screens/result_screen.dart';
 import 'package:hw46/screens/start_test_screen.dart';
-import 'package:hw46/theme/ligh_theme.dart';
+import 'package:hw46/theme/light_theme.dart';
 
 import 'screens/goal_screen.dart';
 

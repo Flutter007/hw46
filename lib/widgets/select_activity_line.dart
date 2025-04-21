@@ -24,7 +24,13 @@ class SelectActivityLine extends StatelessWidget {
             isSelected ? Icons.check_box : Icons.check_box_outline_blank,
           ),
         ),
-        Tooltip(message: message, child: Text(activity)),
+        Tooltip(
+          message: message,
+          child: Text(
+            activity,
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+        ),
       ],
     );
   }
